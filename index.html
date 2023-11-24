@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.00">
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <link rel="icon" type="image/x-icon" href="assets/potatoicon.png">
+    <title>Potato Map</title>
+</head>
+<body>
+<header>
+
+</header>
+<main>
+
+    <div id="overlay" class="overlay"></div>
+    <div id="game-over-message" class="game-over-message">
+        <p>Game Over!</p>
+        <button onclick="resetGame()">Play Again</button>
+    </div>
+
+    <div id="warning-popup" class="popup">
+        <p>Cannot place the element here! Please try rotating or mirroring the element. You can also get a new element.</p>
+        <button onclick="closeWarningPopup()">OK</button>
+    </div>
+    <div id="game-over-cant-place-message" class="popup">
+        <p>You can not place an element after finishing the game. Please, Play Again :)</p>
+        <button onclick="closeGameOverCantPlacePopup()">OK</button>
+    </div>
+
+    <div class="game-container">
+        <audio id="backgroundMusic" loop>
+            <source src="backgroundmusic.mp3" type="audio/mp3">
+            Your browser does not support the audio tag.
+        </audio>
+
+        <button id="toggleButton" class="toggle-button">Toggle Music</button>
+
+        <div class="volume-container">
+            <label for="volumeSlider" class="volume-label">Volume:</label>
+            <input type="range" id="volumeSlider" class="volume-slider" min="0" max="1" step="0.01" value="1">
+        </div>
+
+        <div class="game__inner-wrapper">
+
+            <div>
+                <div class="gameheader">
+                    <span style="--i:1">P</span>
+                    <span style="--i:2">O</span>
+                    <span style="--i:3">T</span>
+                    <span style="--i:4">A</span>
+                    <span style="--i:5">T</span>
+                    <span style="--i:6">O</span>
+                    <span style="--i:7"> </span>
+                    <span style="--i:8">M</span>
+                    <span style="--i:9">A</span>
+                    <span style="--i:10">P</span>
+                </div>
+
+                <div class="grid-container" id="grid"></div>
+
+                <div class="reset-game"><button onclick="resetGame()">Reset Game</button></div>
+            </div>
+
+            <div class="middle-panel">
+                <h2>Elapsed Time in Current Season: <span id="time-count">0/7</span></h2>
+                <h2>Current Element:</h2>
+
+                <div class="element-container">
+
+                    <div class="time-value"><h3 id="time-value-header"><span id="element-time-value"></span></h3></div>
+
+                    <div class="current-element"></div>
+
+                    <div class="element-buttons">
+                        <button onclick="rotateCurrentElement()">Rotate</button>
+                        <button onclick="mirrorCurrentElement()">Mirror</button>
+                        <button onclick="newElement()">New Element</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="right-panel">
+
+                <div class="missions"></div>
+
+                <div class="current-season"><h2>Current Season: <span id="season-name"></span> | Missions :<span id="missions-list"></span></h2></div>
+
+                <div class="score-display"><h1>Total Game Score: <span id="total-game-score">0</span></h1>
+                <h2><span id="current-season-score"></span></h2></div>
+
+                <div class="mission-details" id="mission-details"><h2>Mission Details</h2></div>
+
+                <div id="mountain-encirclement-score">Mountain Encirclement Score: 0</div>
+
+                <div class="elapsed-time"></div>
+
+            </div>
+        </div>
+    </div>
+</main>
+<script src="script.js"></script>
+</body>
+</html>
